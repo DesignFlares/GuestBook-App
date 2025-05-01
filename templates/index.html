@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuestBook App</title>
+</head>
+<body style="font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;">
+
+    <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold;">Logout</a>
+    <h1 style="color: #333;">Submit a Review</h1>
+
+    <form action="/review" method="POST" style="margin-bottom: 30px; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.1);">
+        <label for="username" style="display: block; margin-bottom: 5px;">Username:</label>
+        <input type="text" id="username" name="username" required style="width: 100%; padding: 8px; margin-bottom: 15px;"><br>
+
+        <textarea id="review_text" rows="5" cols="30" name="review_text" placeholder="Write your message here..." required style="width: 100%; padding: 8px; margin-bottom: 15px;"></textarea><br>
+
+        <button id="submit" style="padding: 10px 15px; background-color: #28a745; color: white; border: none; border-radius: 4px;">Submit</button>
+    </form>
+
+    <a href="/history" style="text-decoration: none; color: #007bff; font-weight: bold;">Past Reviews</a>
+
+    <table border="1" style="width: 100%; border-collapse: collapse; background-color: #fff;">
+        <tr style="background-color: #007bff; color: white;">
+            <th style="padding: 10px;">Sno</th>
+            <th style="padding: 10px;">Username</th>
+            <th style="padding: 10px;">Review</th>
+            <th style="padding: 10px;">Timestamp</th>
+        </tr>
+        {% for review in reviews %}
+        <tr>
+            <td style="padding: 8px; text-align: center;">{{ loop.index }}</td>
+            <td style="padding: 8px;">{{ review.user }}</td>
+            <td style="padding: 8px;">{{ review.review_text }}</td>
+            <td style="padding: 8px;">{{ review.timestamp }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

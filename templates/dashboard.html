@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f8f9fa; padding: 40px;">
+
+    <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; display: inline-block; margin-bottom: 20px;">← Login Page</a>
+
+    <h1 style="color: #343a40;">Admin Dashboard</h1>
+    <h2 style="color: #495057;">All Reviews</h2>
+
+    <table border="1" style="width: 100%; border-collapse: collapse; background-color: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.05);">
+        <thead style="background-color: #007bff; color: white;">
+            <tr>
+                <th style="padding: 12px;">Sno</th>
+                <th style="padding: 12px;">Username</th>
+                <th style="padding: 12px;">Review</th>
+                <th style="padding: 12px;">Timestamp</th>
+                <th style="padding: 12px;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for review in reviews %}
+            <tr style="border-bottom: 1px solid #ddd;">
+                <td style="padding: 10px; text-align: center;">{{ loop.index }}</td>
+                <td style="padding: 10px;">{{ review.user }}</td>
+                <td style="padding: 10px;">{{ review.review_text }}</td>
+                <td style="padding: 10px;">{{ review.timestamp }}</td>
+                <td style="padding: 10px; text-align: center;">
+                    <a href="/delete/{{ review.sno }}" 
+                       style="background-color: #dc3545; color: white; padding: 6px 12px; text-decoration: none; border-radius: 4px; font-size: 14px;">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
